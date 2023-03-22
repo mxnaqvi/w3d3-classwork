@@ -30,3 +30,26 @@ def deep_dup(arg)
     end
     return new_arr
 end
+
+def fib(n)
+    return [] if n == 0
+    return [0] if n == 1
+    return [0, 1] if n == 2
+
+    old_n = fib(n-1)
+
+    old_n << old_n[-2] + old_n[-1]
+end
+
+def bsearch(arr, t)
+    mid_idx = arr.length - 1/2
+    return nil  if arr 
+    return arr.length / 2 if t == arr[arr.length/2]
+    p left = arr.select.with_index {|ele, idx| idx <= arr.length/2}
+    p right = arr.select.with_index {|ele, idx| idx > arr.length/2}
+    if arr[mid_idx] < t
+        bsearch(left, t)
+    else
+        bsearch(right, t)
+    end
+end
