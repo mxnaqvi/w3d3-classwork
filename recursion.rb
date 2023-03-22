@@ -61,7 +61,12 @@ end
 
 def merge_sort(arr)
     if left.length == 1 && right.length == 1
-        
+        if left > right
+            return left+right
+        else
+            return right+left
+        end
+    end
 
     mid_idx = arr.length/2
     left = arr[0...mid_idx]
