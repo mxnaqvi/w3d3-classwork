@@ -42,14 +42,17 @@ def fib(n)
 end
 
 def bsearch(arr, t)
-    mid_idx = arr.length - 1/2
-    return nil  if arr 
-    return arr.length / 2 if t == arr[arr.length/2]
-    p left = arr.select.with_index {|ele, idx| idx <= arr.length/2}
-    p right = arr.select.with_index {|ele, idx| idx > arr.length/2}
+    mid_idx = arr.length/2
+    return nil  if arr.empty?
+    return mid_idx if mid_idx == t
+     left = arr[0...mid_idx]
+     right = arr[mid_idx..-1]
     if arr[mid_idx] < t
         bsearch(left, t)
     else
-        bsearch(right, t)
+       right_check = bsearch(right, t)
+       return nil if right_check.nil?
+        
+       left.length + right_check + 1
     end
 end
